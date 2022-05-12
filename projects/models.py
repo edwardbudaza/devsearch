@@ -1,6 +1,5 @@
 from email.policy import default
 from enum import unique
-from tkinter import CASCADE
 from unicodedata import name
 from django.db import models
 import uuid
