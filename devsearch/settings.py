@@ -140,7 +140,7 @@ DATABASES = {
 
         'HOST': os.environ.get('DB_HOST'),
 
-        'PORT': os.environ.get('PORT'),
+        'PORT': os.environ.get('DB_PORT'),
 
     }
 
