@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-pmns_&%4x@x9o(5bv=1&!!u^*zr)p1qteg#)b2m(nhx8%*10%4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'devsearchza.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'devsearchza.herokuapp.com', '*']
 
 
 # Application definition
@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     
     'rest_framework',
     "corsheaders",
-    'storages'
+    'storages',
+
 ]
 
 
@@ -132,15 +133,15 @@ DATABASES = {
 
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 
-        'NAME': 'devsearch',
+        'NAME': os.environ.get('DB_NAME'),
 
-        'USER': 'edwardbudaza',
+        'USER': os.environ.get('DB_USER'),
 
-        'PASSWORD': 'PE86mfog09b5546??',
+        'PASSWORD': os.environ.get('DB_PASS'),
 
-        'HOST': 'database-1.ck3d8wbxapav.us-east-2.rds.amazonaws.com',
+        'HOST': os.environ.get('DB_HOST'),
 
-        'PORT': '5432',
+        'PORT': os.environ.get('DB_PORT'),
 
     }
 
@@ -187,11 +188,11 @@ USE_TZ = True
 CORS_ALLOW_ALL_ORIGINS = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'g09b5546@gmail.com'
-EMAIL_HOST_PASSWORD = 'viiiephriiuqgjum'
+EMAIL_HOST = os.environ.get('EMAIL_HOST')
+EMAIL_PORT = os.environ.get('EMAIL_PORT')
+EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
 
 
@@ -221,10 +222,10 @@ AWS_QUERYSTRING_AUTH = False
 # AWS_S3_FILE_OVERWRITE = False  
 
 
-# AWS_S3_ACCESS_KEY_ID = 'AKIAXSWU65NSUMEOQVZM'
-AWS_ACCESS_KEY_ID = 'AKIAXSWU65NSUMEOQVZM'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'devsearch-bucket-live'
+#aws bucket connection
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 
 if os.getcwd() == '/app':
     DEBUG = False

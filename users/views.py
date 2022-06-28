@@ -11,6 +11,7 @@ from .forms import CustomUserCreationForm, ProfileForm, SkillForm, MessageForm
 from .utils import searchProfiles, paginateProfiles
 # Create your views here.
 
+#Testing
 def loginUser(request):
     page = 'register'
     context = {'page': page}
